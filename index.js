@@ -62,3 +62,26 @@ console.log(romanToNumeral("MCMXCIV"));
 
 console.log("___________________________________________________________");
 
+// Given an integer numRows, return the first numRows of Pascal's triangle.
+
+const pascalTriangel = (numRows) => {
+    if (numRows === 0) return [];
+
+    const triangle = [[1]];
+
+    for (let i = 1; i < numRows; i++) {
+        const prevRow = triangle[i - 1];
+        const currentRow = [1];
+
+        for (let j = 1; j < i; j++) {
+            currentRow.push(prevRow[j - 1] + prevRow[j]);
+        }
+
+        currentRow.push(1);
+        triangle.push(currentRow);
+    }
+
+    return triangle;
+}
+
+pascalTriangel(5).forEach((data) => console.log(data));
